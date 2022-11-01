@@ -18,15 +18,20 @@ public class Passenger {
     }
 
     public void setName(String name){
-        if(name.length() > 2){
-          this.name = name;
+        if(name.length() > 2) {
+            this.name = name;
         }
+        else{
 
+        }
     }
 
     public void setId(String id){
         if(id.length() > 9) {
             this.id = id;
+        }
+        else{
+
         }
     }
 
@@ -34,12 +39,19 @@ public class Passenger {
         if(phone.length() >6) {
             this.phone = phone;
         }
+        else{
+
+        }
+
     }
 
     public void setAge(int age){
-        if(age >= 16) {
-            this.age = age;
-        }
+            if (age >= 16) {
+                this.age = age;
+            }
+            else{
+
+            }
     }
 
     public String getTitle(){
