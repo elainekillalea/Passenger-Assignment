@@ -9,12 +9,12 @@ public class Passenger {
     private int age;
 
     public void setTitle(String title){
-        switch (title) {
-            case "Mr", "Mrs", "Ms" -> this.title = title;
-            default -> {
-            }
+        if (title == "Mr" | title == "Mrs" |title == "Ms") {
+            this.title = title;
         }
-
+        else {
+            throw new IllegalArgumentException("Title invalid, try again");
+        }
     }
 
     public void setName(String name){
@@ -22,7 +22,7 @@ public class Passenger {
             this.name = name;
         }
         else{
-
+            throw new IllegalArgumentException("Name invalid, try again");
         }
     }
 
@@ -31,7 +31,7 @@ public class Passenger {
             this.id = id;
         }
         else{
-
+            throw new IllegalArgumentException("Id invalid, try again");
         }
     }
 
@@ -40,18 +40,18 @@ public class Passenger {
             this.phone = phone;
         }
         else{
-
+            throw new IllegalArgumentException("Phone number invalid, try again");
         }
 
     }
 
     public void setAge(int age){
-            if (age >= 16) {
-                this.age = age;
-            }
-            else{
-
-            }
+        if (age >= 16) {
+            this.age = age;
+        }
+        else{
+            throw new IllegalArgumentException("Age invalid, try again");
+        }
     }
 
     public String getTitle(){
