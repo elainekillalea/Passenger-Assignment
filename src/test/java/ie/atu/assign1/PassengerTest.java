@@ -1,16 +1,15 @@
 package ie.atu.assign1;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PassengerTest {
 
     Passenger passenger;
-
 
     @BeforeEach
     void setUp(){
@@ -22,10 +21,11 @@ public class PassengerTest {
         passenger.setTitle("Mr");
         assertEquals("Mr", passenger.getTitle());
     }
+
     @Test
-    void testTitleFail(){
-        passenger.setTitle("xx");
-        assertNull(passenger.getTitle());
+    void exceptionTestingTitle() {
+        Exception exMsg = assertThrows(IllegalArgumentException.class, () -> passenger.setTitle("xx"));
+        assertEquals("Title invalid, try again", exMsg.getMessage());
     }
 
     @Test
@@ -35,9 +35,9 @@ public class PassengerTest {
     }
 
     @Test
-    void testNameFail(){
-        passenger.setName("zz");
-        assertNull(passenger.getName());
+    void exceptionTestingName() {
+        Exception exMsg = assertThrows(IllegalArgumentException.class, () -> passenger.setName("zz"));
+        assertEquals("Name invalid, try again", exMsg.getMessage());
     }
 
     @Test
@@ -47,11 +47,10 @@ public class PassengerTest {
     }
 
     @Test
-    void testIdFail(){
-        passenger.setId("qwerty");
-        assertNull(passenger.getId());
+    void exceptionTestingId() {
+        Exception exMsg = assertThrows(IllegalArgumentException.class, () -> passenger.setId("qwerty"));
+        assertEquals("Id invalid, try again", exMsg.getMessage());
     }
-
 
     @Test
     void testPhonePass(){
@@ -60,9 +59,9 @@ public class PassengerTest {
     }
 
     @Test
-    void testPhoneFail(){
-        passenger.setPhone("087123");
-        assertNull(passenger.getPhone());
+    void exceptionTestingPhone() {
+        Exception exMsg = assertThrows(IllegalArgumentException.class, () -> passenger.setPhone("087123"));
+        assertEquals("Phone number invalid, try again", exMsg.getMessage());
     }
 
 
@@ -73,9 +72,13 @@ public class PassengerTest {
     }
 
     @Test
-    void testAgeFail(){
-        passenger.setAge(14);
-        assertEquals(0, passenger.getAge());
+    void exceptionTestingAge() {
+        Exception exMsg = assertThrows(IllegalArgumentException.class, () -> passenger.setAge(14));
+        assertEquals("Age invalid, try again", exMsg.getMessage());
     }
 
+    @AfterEach
+    void tearDown(){
+
+    }
 }
